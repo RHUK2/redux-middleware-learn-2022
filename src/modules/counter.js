@@ -4,6 +4,18 @@ const DECREASE = 'DECREASE';
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
+export const increaseAsync = () => {
+  return (dispatch) => {
+    setTimeout(() => dispatch(increase()), 1000);
+  };
+};
+
+export const decreaseAsync = () => {
+  return (dispatch) => {
+    setTimeout(() => dispatch(decrease()), 1000);
+  };
+};
+
 const initialState = 0;
 
 export default function counter(state = initialState, action) {
