@@ -1,16 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import GlobalStyle from 'components/GlobalStyle';
 import CounterContainer from 'containers/CounterContainer';
 import PostListContainer from 'containers/PostListContainer';
+import PostContainer from 'containers/PostContainer';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <CounterContainer />
-      <PostListContainer />
-      <GlobalStyle />
-    </>
+      <Route exact path="/" component={PostListContainer} />
+      <Route path="/:id" component={PostContainer} />
+    </BrowserRouter>
   );
 }
 

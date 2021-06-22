@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Counter from 'components/Counter';
 import {
   // decrease,
-  decreaseAsync,
   // increase,
   increaseAsync,
+  decreaseAsync,
 } from 'modules/counter';
 
 function CounterContainer() {
