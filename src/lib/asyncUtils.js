@@ -1,8 +1,6 @@
 export const createPromiseThunk = (type, promiseCreator) => {
-  // action.type 설정
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
-  // action 함수 반환
   return (param) => async (dispatch) => {
     dispatch({ type });
     try {
