@@ -13,20 +13,19 @@ import logger from 'redux-logger';
 import GlobalStyle from 'components/GlobalStyle';
 import App from 'components/App';
 
-// 사가 미들웨어 생성
+// Create Saga
 const sagaMiddleware = createSagaMiddleware();
 
-// 스토어 생성
+// Create Store
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(ReduxThunk, sagaMiddleware, logger)),
 );
 
-// 사가 액션 모니터링 시작
+// Saga Run
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  // 스토어 제공
   <Provider store={store}>
     <App />
     <GlobalStyle />

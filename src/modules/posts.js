@@ -28,7 +28,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 //   }
 // };
 
-// action.type
+// Action Label
 const GET_POSTS = 'GET_POSTS';
 const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
 const GET_POSTS_ERROR = 'GET_POSTS_ERROR';
@@ -36,11 +36,11 @@ const GET_POST = 'GET_POST';
 const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
 const GET_POST_ERROR = 'GET_POST_ERROR';
 
-// action object
+// Action
 export const getPosts = () => ({ type: GET_POSTS });
 export const getPost = (id) => ({ type: GET_POST, id });
 
-// action work
+// Saga
 function* getPostsSaga() {
   try {
     const posts = yield call(postsAPI.getPosts);
@@ -57,6 +57,7 @@ function* getPostsSaga() {
 }
 function* getPostSaga(action) {
   try {
+    console.log(action);
     const post = yield call(postsAPI.getPostById, action.id);
     yield put({
       type: GET_POST_SUCCESS,
@@ -69,7 +70,7 @@ function* getPostSaga(action) {
     });
   }
 }
-// init value
+
 const initialState = {
   posts: {
     loading: false,
@@ -83,7 +84,7 @@ const initialState = {
   },
 };
 
-// reducer
+// Reducer
 export default function posts(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:

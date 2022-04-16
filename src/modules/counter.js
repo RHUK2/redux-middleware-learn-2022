@@ -12,34 +12,31 @@ import { delay, put, takeEvery, takeLatest } from 'redux-saga/effects';
 //   };
 // };
 
-// action.type
+// Action Label
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 const INCREASE_ASYNC = 'INCREASE_ASYNC';
 const DECREASE_ASYNC = 'DECREASE_ASYNC';
 
-// action object
+// Action
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 export const increaseAsync = () => ({ type: INCREASE_ASYNC });
 export const decreaseAsync = () => ({ type: DECREASE_ASYNC });
 
-// action work
+// Saga
 function* increaseSaga() {
   yield delay(1000);
-  // dispatch
   yield put(increase());
 }
 function* decreaseSaga() {
   yield delay(1000);
-  // dispatch
   yield put(decrease());
 }
 
-// init value
 const initialState = 0;
 
-// reducer
+// Reducer
 export default function counter(state = initialState, action) {
   switch (action.type) {
     case INCREASE:

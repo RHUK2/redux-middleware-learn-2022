@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from 'modules/posts';
 
 import Post from 'components/Post';
+import { useParams } from 'react-router-dom';
 
-function PostContainer({ match }) {
+function PostContainer() {
   const { loading, data, error } = useSelector((state) => {
     return state.posts.post;
   });
   const dispatch = useDispatch();
-  const id = parseInt(match.params.id);
+  const params = useParams();
+  const id = Number(params.id);
 
   useEffect(() => {
     dispatch(getPost(id));

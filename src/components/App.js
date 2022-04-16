@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import CounterContainer from 'containers/CounterContainer';
 import PostListContainer from 'containers/PostListContainer';
@@ -8,9 +8,11 @@ import PostContainer from 'containers/PostContainer';
 function App() {
   return (
     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PostListContainer />} />
+        <Route path="/:id" element={<PostContainer />} />
+      </Routes>
       <CounterContainer />
-      <Route exact path="/" component={PostListContainer} />
-      <Route path="/:id" component={PostContainer} />
     </BrowserRouter>
   );
 }
